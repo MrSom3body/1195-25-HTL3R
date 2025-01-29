@@ -46,18 +46,21 @@
             {
               packages = with pkgs; [
                 git # duh
-
-                jdt-language-server
-                jdk8
               ];
 
-              languages.python = {
-                enable = true;
-                version = "3.12";
-                poetry = {
+              languages = {
+                python = {
                   enable = true;
-                  activate.enable = true;
-                  install.enable = true;
+                  version = "3.12";
+                  poetry = {
+                    enable = true;
+                    activate.enable = true;
+                    install.enable = true;
+                  };
+                };
+
+                java = {
+                  enable = true;
                 };
               };
 
