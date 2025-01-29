@@ -24,6 +24,26 @@ class Caesar:
         """
         return "".join([ch.lower() for ch in plaintext if ch.isalpha()])
 
+    def encrypt(self, plaintext: str, key: str | None = None) -> str:
+        """
+        Encrypts a plaintext with the Caesar cipher.
+        :param plaintext: the plaintext to be encrypted
+        :param key: the key to be used for the encryption
+        :return: the encrypted plaintext
+        >>> caesar = Caesar()
+        >>> caesar.encrypt("Hello, World!", "b")
+        'ifmmpxpsme'
+        >>> caesar.encrypt("Hello, World!", "f")
+        'mjqqtbtwqi'
+        """
+        key = self.check_key(key, self.key)
+
+        i_key = ord(key.lower()) - 97
+        plaintext = self.to_lowercase_letter_only(plaintext)
+        return "".join(
+            [chr(((ord(ch) - 97 + i_key) % 26) + 97) for ch in plaintext]
+        )
+
 
 if __name__ == "__main__":
     import doctest
