@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "2425-4cn-1195-sew4"
+name = "1195-25-HTL3R-sem1"
 version = "0.1.0"
-description = "Software development in 4th year at HTL3R (Python)"
+description = "Software development in 4th year at HTL3R"
 authors = ["Karun Sandhu <129101708+MrSom3body@users.noreply.github.com>"]
 license = "GPLv3"
 readme = "README.md"
