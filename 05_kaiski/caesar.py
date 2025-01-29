@@ -44,6 +44,23 @@ class Caesar:
             [chr(((ord(ch) - 97 + i_key) % 26) + 97) for ch in plaintext]
         )
 
+    def decrypt(self, crypttext: str, key: str | None = None) -> str:
+        """
+        Decrypts a ciphertext with the Caesar cipher.
+        :param crypttext: the ciphertext to be decrypted
+        :param key: the key to be used for the decryption
+        :return: the decrypted ciphertext
+        >>> caesar = Caesar()
+        >>> caesar.decrypt("ifmmpxpsme", "b")
+        'helloworld'
+        >>> caesar.decrypt("mjqqtbtwqi", "f")
+        'helloworld'
+        """
+        reverse_key = chr(
+            (26 - (ord(self.check_key(key, self.key)) - 97)) % 26 + 97
+        )
+        return self.encrypt(crypttext, reverse_key)
+
 
 if __name__ == "__main__":
     import doctest
