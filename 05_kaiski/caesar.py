@@ -1,6 +1,15 @@
 class Caesar:
-    def __init__(self, key: str = "") -> None:
-        self.key: str = key
+    def __init__(self, key: str | None = None) -> None:
+        self.key: str = self.check_key(key)
+
+    def check_key(self, key: str | None, fallback_key: str = "a") -> str:
+        if key:
+            if key.isalpha() and len(key) == 1:
+                return key.lower()
+            else:
+                raise ValueError(f"The key must be a single letter, not: {key}")
+        else:
+            return self.check_key(fallback_key)
 
     def to_lowercase_letter_only(self, plaintext: str) -> str:
         """
