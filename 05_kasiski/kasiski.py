@@ -89,6 +89,24 @@ class Kasiski:
         """
         return [*set([elem[1] for elem in self.dist_n_tuple(text, length)])]
 
+    def gcd(self, x: int, y: int) -> int:
+        """
+        Calculates the greatest common divisor of two integers.
+        :param x: first integer
+        :param y: second integer
+        :return: greatest common divisor
+
+        >>> k = Kasiski()
+        >>> k.gcd(10, 25)
+        5
+        >>> k.gcd(48, 18)
+        6
+        """
+        if min(x, y) == 0:
+            return max(x, y)
+        else:
+            return self.gcd(min(x, y), max(x, y) % min(x, y))
+
 
 if __name__ == "__main__":
     import doctest
