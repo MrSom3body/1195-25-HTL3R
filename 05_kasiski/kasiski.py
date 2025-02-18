@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class Kasiski:
     def __init__(self, crypttext: str = "") -> None:
         self.crypttext = crypttext
@@ -106,6 +109,24 @@ class Kasiski:
             return max(x, y)
         else:
             return self.gcd(min(x, y), max(x, y) % min(x, y))
+
+    def gcd_count(self, numbers: list[int]) -> Counter[int]:
+        """
+        Gets the greatest common divisor of all the combinations in numbers.
+        :param numbers: the list with the numbers
+        :return: the counter with all the gcd's
+
+        >>> k = Kasiski()
+        >>> k.gcd_count([12, 14, 16])
+        Counter({2: 2, 12: 1, 4: 1, 14: 1, 16: 1})
+        >>> k.gcd_count([10, 25, 50, 100])
+        Counter({10: 3, 25: 3, 50: 2, 5: 1, 100: 1})
+        """
+        gcds: list[int] = []
+        for i in range(len(numbers)):
+            for j in range(i, len(numbers)):
+                gcds.append(self.gcd(numbers[i], numbers[j]))
+        return Counter(gcds)
 
 
 if __name__ == "__main__":
