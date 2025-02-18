@@ -75,6 +75,9 @@ class Kasiski:
         a list with all distances of all repetitions of the substring without
         the substring. It also removes duplicate distances and sorts the list
         ascending.
+        :param text: the text to look in
+        :param length: the lenght of the substrings to look for
+        :return: a list containing the distances
 
         >>> k = Kasiski()
         >>> k.dist_n_list("heissajucheieinei", 2)
