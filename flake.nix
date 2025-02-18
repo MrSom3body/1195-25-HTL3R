@@ -64,10 +64,16 @@
                 };
               };
 
-              enterShell = ''
-                git --version
-                hx --version
-              '';
+              enterShell =
+                # bash
+                ''
+                  tput setaf 2; tput bold; echo "git version"; tput sgr0
+                  git --version
+                  tput setaf 2; tput bold; echo "python version"; tput sgr0
+                  python --version
+                  tput setaf 2; tput bold; echo "java version"; tput sgr0
+                  java --version
+                '';
 
               pre-commit.hooks = {
                 autoflake.enable = true;
