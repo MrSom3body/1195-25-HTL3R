@@ -44,6 +44,35 @@ class Vigenere:
 
         return encrypted
 
+    def decrypt(self, crypttext: str, key: str | None = None) -> str:
+        """
+        Decrypts a ciphertext with the Vigenere cipher.
+        :param crypttext: the ciphertext to be decrypted
+        :param key: the key to be used for the decryption
+        :return: the decrypted ciphertext
+
+        >>> vigenere = Vigenere()
+        >>> vigenere.decrypt("hfnos", "abcde")
+        'hello'
+
+        >>> vigenere.decrypt("lxfopvefrnhr", "lemon")
+        'attackatdawn'
+
+        >>> vigenere.encrypt("", "abcd")
+        ''
+        >>> vigenere.encrypt("hello", "ABCDE d 1 213 12")
+        Traceback (most recent call last):
+        ...
+        ValueError: The key must only contain letters: ABCDE d 1 213 12
+        """
+        key = self.check_key(key, self.key)
+        decrypted = ""
+
+        for index, ch in enumerate(crypttext):
+            decrypted += self.caesar.decrypt(ch, key[index % len(key)])
+
+        return decrypted
+
 
 if __name__ == "__main__":
     import doctest
