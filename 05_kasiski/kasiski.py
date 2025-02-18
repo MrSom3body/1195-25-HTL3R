@@ -69,6 +69,23 @@ class Kasiski:
                     dist_n.add((substring, dist))
         return dist_n
 
+    def dist_n_list(self, text: str, length: int) -> list[int]:
+        """
+        Checks all substrings of the text with the provided length and returns
+        a list with all distances of all repetitions of the substring without
+        the substring. It also removes duplicate distances and sorts the list
+        ascending.
+
+        >>> k = Kasiski()
+        >>> k.dist_n_list("heissajucheieinei", 2)
+        [2, 3, 5, 9, 11, 14]
+        >>> k.dist_n_list("heissajucheieinei", 3)
+        [9]
+        >>> k.dist_n_list("heissajucheieinei", 4)
+        []
+        """
+        return [*set([elem[1] for elem in self.dist_n_tuple(text, length)])]
+
 
 if __name__ == "__main__":
     import doctest
