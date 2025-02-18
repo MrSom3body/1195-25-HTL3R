@@ -47,7 +47,7 @@ class Kasiski:
         a set with all distances of all repetitions of the substring.
         :param text: the text to look in
         :param length: the lenght of the substrings to look for
-        :return: a set containig tuples containing the substring and the count
+        :return: a set containig tuples containing the substring and the distances
         
         >>> k = Kasiski()
         >>> k.dist_n_tuple("heissajuchei", 2) == {('ei', 9), ('he', 9)}
