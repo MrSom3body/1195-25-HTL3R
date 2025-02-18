@@ -128,6 +128,19 @@ class Kasiski:
                 gcds.append(self.gcd(numbers[i], numbers[j]))
         return Counter(gcds)
 
+    def get_nth_letter(self, s: str, start: int, n: int) -> str:
+        """
+        Extracts every n-th letter after start.
+        :param s: the string to pick the letters out of
+        :param start: the index to start after
+        :param n: interval to select the letter
+
+        >>> k = Kasiski()
+        >>> k.get_nth_letter("Das ist kein kreativer Text.", 1, 4)
+        'asektrx'
+        """
+        return "".join([ch for ch in s[start::n]])
+
 
 if __name__ == "__main__":
     import doctest
