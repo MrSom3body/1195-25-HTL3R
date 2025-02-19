@@ -41,7 +41,9 @@ class Vigenere:
         key = self.check_key(key, self.key)
         encrypted = ""
 
-        for index, ch in enumerate(plaintext):
+        for index, ch in enumerate(
+            self.caesar.to_lowercase_letter_only(plaintext)
+        ):
             encrypted += self.caesar.encrypt(ch, key[index % len(key)])
 
         return encrypted
@@ -70,7 +72,9 @@ class Vigenere:
         key = self.check_key(key, self.key)
         decrypted = ""
 
-        for index, ch in enumerate(crypttext):
+        for index, ch in enumerate(
+            self.caesar.to_lowercase_letter_only(crypttext)
+        ):
             decrypted += self.caesar.decrypt(ch, key[index % len(key)])
 
         return decrypted
