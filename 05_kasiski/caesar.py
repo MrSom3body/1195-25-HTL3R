@@ -66,7 +66,7 @@ class Caesar:
         )
         return self.encrypt(crypttext, reverse_key)
 
-    def crack(self, crypttext: str, elements: int = 1) -> list[str] | None:
+    def crack(self, crypttext: str, elements: int = 1) -> list[str]:
         """
         Gets the most likely keys for a given ciphertext in German.
         :param crypttext: the ciphertext to crack
