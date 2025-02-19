@@ -178,5 +178,15 @@ class Kasiski:
 
 if __name__ == "__main__":
     import doctest
+    from .vigenere import Vigenere
 
     _ = doctest.testmod()
+
+    with open("05_kasiski/text.txt") as f:
+        text = " ".join(f.readlines())
+
+    key = "bomboclad"
+    v = Vigenere(key)
+    encrypted = v.encrypt(text)
+    k = Kasiski(encrypted)
+    print(k.crack_key(6))
