@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "1195-25-HTL3R-sem1"
+name = "1195-25-HTL3R"
 version = "0.1.0"
 description = "Software development in 4th year at HTL3R"
 authors = ["Karun Sandhu <129101708+MrSom3body@users.noreply.github.com>"]
