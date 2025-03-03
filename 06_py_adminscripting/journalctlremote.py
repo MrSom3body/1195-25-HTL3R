@@ -1,12 +1,11 @@
 __author__ = "Karun Sandhu"
 
 import paramiko
+from paramiko import SSHClient
 from getpass import getpass
 
 
-def key_based_connect(
-    host: str, passphrase: str | None = None
-) -> paramiko.SSHClient:
+def key_based_connect(host: str, passphrase: str | None = None) -> SSHClient:
     username = "karun"
     keyfile = "/home/karun/.ssh/id_ed25519"
     if not passphrase:
