@@ -13,3 +13,12 @@ def read_all_words(filename: str) -> set[str]:
         for line in f:
             s.add(line)
     return s
+
+
+def split_word(word: str) -> list[tuple[str, str]]:
+    """
+    Split a word into each possibility of two parts.
+    :param word: the word to split:
+    :return: list of tuple each containing one possibility of splitting the word.
+    """
+    return [(word[:i], word[i:]) for i in range(len(word) + 1)]
