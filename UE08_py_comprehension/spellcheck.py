@@ -66,6 +66,33 @@ def edit2_good(word: str, dictionary: set[str]) -> set[str]:
     return {w2 for w1 in edit1(word) for w2 in edit1(w1) if w2 in dictionary}
 
 
+def correct(word: str, dictionary: list[str]) -> set[str]:
+    """
+    Finds the correction(s) for a given word.
+    :param word: the word to correct
+    :param dictionary: the list of valid words
+    :return: set with corrections or empty set if nothing found
+
+    >>> correct("hund", ["hund", "hand", "haus", "haut", "hans"])
+    {'hund'}
+    >>> correct("hudn", ["hund", "hand", "haus", "haut", "hans"])
+    {'hund'}
+    >>> correct("huns", ["hund", "hand", "haus", "haut", "hans"])
+    {'haus', 'hund', 'hans'}
+    >>> correct("xyz", ["hund", "hand", "haus", "haut", "hans"])
+    set()
+    """
+    return (
+        {word.lower()}
+        if word.lower() in set(dictionary)
+        else (
+            edit1_good(word, set(dictionary))
+            or edit2_good(word, set(dictionary))
+            or set()
+        )
+    )
+
+
 if __name__ == "__main__":
     import doctest
 
