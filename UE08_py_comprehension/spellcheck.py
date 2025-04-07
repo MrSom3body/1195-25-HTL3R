@@ -13,7 +13,7 @@ def read_all_words(filename: str) -> set[str]:
     s: set[str] = set()
     with open(filename) as f:
         for line in f:
-            s.add(line)
+            s.add(line.strip().lower())
     return s
 
 
