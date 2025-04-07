@@ -48,6 +48,15 @@ def edit1(word: str) -> set[str]:
     return words
 
 
+def edit1_good(word: str, dictionary: set[str]) -> set[str]:
+    """
+    Finds all possible corrections for a word.
+    :param word: the mistyped word
+    :return: set with possible completions
+    """
+    return edit1(word.lower()) & dictionary
+
+
 if __name__ == "__main__":
     import doctest
 
