@@ -32,21 +32,18 @@ def edit1(word: str) -> set[str]:
     :param word: the word to find the variations for
     :return: set with all variations with an edit distance 1
     >>> edit1("abc")
-    {'abjc', 'hbc', 'gabc', 'iabc', 'tabc', 'akbc', 'abcx', 'aoc', 'aqbc', 'abac', 'abpc', 'azbc', 'abec', 'awbc', 'ab', 'mbc', 'arc', 'anc', 'vbc', 'agbc', 'aec', 'gbc', 'abs', 'aac', 'qabc', 'aibc', 'vabc', 'abic', 'abn', 'abj', 'zbc', 'apc', 'labc', 'dbc', 'jabc', 'aybc', 'azc', 'ahbc', 'albc', 'ajbc', 'aic', 'lbc', 'abi', 'abcl', 'rabc', 'abqc', 'abq', 'abnc', 'abl', 'axbc', 'abrc', 'mabc', 'avbc', 'abc', 'akc', 'ambc', 'abgc', 'abt', 'abcz', 'rbc', 'abtc', 'habc', 'abcq', 'abhc', 'abcn', 'asc', 'abb', 'abe', 'aabc', 'jbc', 'abp', 'abr', 'abcf', 'abwc', 'abmc', 'arbc', 'asbc', 'xbc', 'aubc', 'nbc', 'zabc', 'pabc', 'ahc', 'cabc', 'abcw', 'abcj', 'dabc', 'fabc', 'abck', 'aebc', 'abch', 'adc', 'wabc', 'abdc', 'abcc', 'auc', 'atbc', 'abo', 'cbc', 'eabc', 'abm', 'abcm', 'abx', 'ablc', 'abvc', 'bc', 'abf', 'abh', 'abcg', 'abv', 'ajc', 'abyc', 'ayc', 'abkc', 'bbc', 'uabc', 'abcd', 'sbc', 'awc', 'obc', 'qbc', 'agc', 'abxc', 'abk', 'abct', 'acb', 'xabc', 'abcp', 'abce', 'abcr', 'abcu', 'tbc', 'kbc', 'aqc', 'axc', 'abz', 'atc', 'fbc', 'afc', 'aboc', 'kabc', 'abd', 'abu', 'abcv', 'abca', 'acc', 'abci', 'nabc', 'babc', 'ybc', 'aobc', 'ubc', 'alc', 'abcs', 'wbc', 'acbc', 'yabc', 'aby', 'amc', 'absc', 'abbc', 'abuc', 'abzc', 'abw', 'anbc', 'ac', 'abfc', 'pbc', 'ebc', 'ibc', 'abg', 'avc', 'bac', 'oabc', 'apbc', 'aba', 'abcb', 'abcy', 'abco', 'sabc', 'afbc', 'adbc'}
+    {'abjc', 'cbc', 'hbc', 'gabc', 'eabc', 'abm', 'abcm', 'iabc', 'tabc', 'akbc', 'abcx', 'aoc', 'aqbc', 'abac', 'abx', 'abpc', 'ablc', 'azbc', 'abec', 'abvc', 'awbc', 'ab', 'bc', 'abf', 'abh', 'mbc', 'abcg', 'arc', 'anc', 'vbc', 'abv', 'ajc', 'agbc', 'abyc', 'ayc', 'aec', 'gbc', 'abs', 'aac', 'qabc', 'abkc', 'bbc', 'aibc', 'vabc', 'abic', 'abn', 'abj', 'zbc', 'apc', 'uabc', 'abcd', 'labc', 'dbc', 'jabc', 'aybc', 'azc', 'sbc', 'ahbc', 'albc', 'awc', 'ajbc', 'obc', 'qbc', 'lbc', 'agc', 'aic', 'abi', 'abcl', 'abxc', 'rabc', 'abk', 'abqc', 'abq', 'abct', 'acb', 'abcp', 'abnc', 'xabc', 'abce', 'abl', 'abcr', 'abcu', 'tbc', 'kbc', 'axbc', 'aqc', 'abrc', 'axc', 'abz', 'atc', 'mabc', 'avbc', 'abc', 'fbc', 'akc', 'afc', 'aboc', 'kabc', 'abd', 'abu', 'ambc', 'abcv', 'abgc', 'abt', 'abcz', 'abca', 'rbc', 'abtc', 'habc', 'abcq', 'abhc', 'abcn', 'asc', 'abb', 'abe', 'acc', 'abci', 'aabc', 'jbc', 'nabc', 'abp', 'abr', 'abcf', 'babc', 'ybc', 'abwc', 'aobc', 'ubc', 'abmc', 'alc', 'abcs', 'wbc', 'acbc', 'arbc', 'yabc', 'aby', 'asbc', 'xbc', 'aubc', 'nbc', 'zabc', 'amc', 'absc', 'pabc', 'abbc', 'ahc', 'cabc', 'abcw', 'abuc', 'abzc', 'abcj', 'dabc', 'abw', 'anbc', 'ac', 'fabc', 'abck', 'abfc', 'aebc', 'pbc', 'ebc', 'ibc', 'abg', 'avc', 'bac', 'abch', 'oabc', 'apbc', 'aba', 'adc', 'abcb', 'wabc', 'abdc', 'abcy', 'abcc', 'auc', 'abco', 'sabc', 'atbc', 'afbc', 'abo', 'adbc'}
     >>> edit1("a")
-    {'am', 'ka', 'a', 'o', 'ua', 'aq', 'f', 'ao', 'p', 'ab', 'va', 'ay', 'af', 'sa', 'qa', 'c', 'ai', 'e', 'ga', 'ra', 'ja', 'at', 'aw', 'aj', 'g', 'k', 'ae', 'ta', 'ca', 'd', 'b', 'ia', 'av', 's', 'h', 'ya', 'i', 'z', 'r', 'ar', 'j', 'ad', 'y', 'm', 'ah', 'ak', 'q', 'u', 'ha', 'pa', 'ea', 'wa', 'ag', 'w', 'l', 'au', 'xa', 'as', 'v', 'fa', 'x', 'da', 'ac', 'ma', 'ba', 'na', 'n', 'ax', 'za', 'al', 'az', 'la', 'aa', 'an', 'oa', 't', 'ap'}
+    {'am', 'ka', 'z', 'r', 'ar', 'a', 'o', 'j', 'ua', 'aq', 'f', 'ao', 'p', 'ab', 'ad', 'y', 'va', 'm', 'ay', 'af', 'ah', 'ak', 'q', 'u', 'sa', 'ha', 'qa', 'pa', 'c', 'ea', 'ai', 'e', 'w', 'ag', 'l', 'au', 'wa', 'ga', 'xa', 'as', 'ra', 'ja', 'v', 'at', 'aw', 'aj', 'fa', 'x', 'da', 'g', 'k', 'ae', 'ac', 'ta', 'ca', 'ma', 'ba', 'd', 'na', 'n', 'b', 'ax', 'al', 'az', 'za', 'la', 'ia', 'av', 'aa', 'an', 'oa', 's', 'h', 'ya', 't', 'i', 'ap'}
     """
     sw = split_word(word)
 
-    words = (
-        {w[0] + w[1][1:] for w in sw}.union(
-            w[0] + w[1][1:2] + w[1][0:1] + w[1][2:] for w in sw if len(w[1]) > 1
-        )
-        .union(
-            w[0] + ch + w[1][1:] for w in sw for ch in string.ascii_lowercase
-        )
-        .union(w[0] + ch + w[1] for w in sw for ch in string.ascii_lowercase)
-    )
+    words = {w[0] + w[1][1:] for w in sw}
+    words |= {
+        w[0] + w[1][1:2] + w[1][0:1] + w[1][2:] for w in sw if len(w[1]) > 1
+    }
+    words |= {w[0] + ch + w[1][1:] for w in sw for ch in string.ascii_lowercase}
+    words |= {w[0] + ch + w[1] for w in sw for ch in string.ascii_lowercase}
     words.discard("")
     return words
 
