@@ -57,6 +57,15 @@ def edit1_good(word: str, dictionary: set[str]) -> set[str]:
     return edit1(word.lower()) & dictionary
 
 
+def edit2_good(word: str, dictionary: set[str]) -> set[str]:
+    """
+    Does the same like edit2_good but with an edit distance of 2.
+    :param word: the mistyped word
+    :return: set with possible completions
+    """
+    return {w2 for w1 in edit1(word) for w2 in edit1(w1) if w2 in dictionary}
+
+
 if __name__ == "__main__":
     import doctest
 
