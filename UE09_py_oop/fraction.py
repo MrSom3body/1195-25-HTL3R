@@ -86,3 +86,16 @@ class Fraction:
 
     def __rmul__(self, otherfraction: "Fraction | int"):
         return self.__mul__(otherfraction)
+
+    def __truediv__(self, otherfraction: "Fraction | int") -> "Fraction":
+        if isinstance(otherfraction, Fraction):
+            if otherfraction._numerator == 0:
+                raise ZeroDivisionError("Division by zero fraction")
+            return Fraction(
+                self._numerator * otherfraction._denominator,
+                self._denominator * otherfraction._numerator,
+            )
+        else:
+            if otherfraction == 0:
+                raise ZeroDivisionError("Division by zero")
+            return Fraction(self._numerator, self._denominator * otherfraction)
