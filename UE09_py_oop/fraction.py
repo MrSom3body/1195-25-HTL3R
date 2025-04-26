@@ -91,6 +91,34 @@ class Fraction:
         else:
             return NotImplemented
 
+    def __lt__(self, otherfraction: object) -> bool | NotImplementedType:
+        """
+        Check less-than.
+
+        :param other: Fraction, int or float
+        :return: bool
+
+        >>> Fraction(1, 2) < Fraction(3, 4)
+        True
+        >>> Fraction(1, 2) < 1
+        True
+        >>> Fraction(1, 2) < 0.6
+        True
+        >>> Fraction(1, 2) < 0.4
+        False
+        """
+        if isinstance(otherfraction, Fraction):
+            return (
+                self._numerator * otherfraction._denominator
+                < otherfraction._numerator * self._denominator
+            )
+        elif isinstance(otherfraction, int):
+            return self._numerator < otherfraction * self._denominator
+        elif isinstance(otherfraction, float):
+            return self._numerator / self._denominator < otherfraction
+        else:
+            return NotImplemented
+
     def __add__(self, otherfraction: "Fraction | int") -> "Fraction":
         """
         Add fractions or int.
