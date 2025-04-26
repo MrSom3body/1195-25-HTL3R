@@ -30,6 +30,30 @@ class Fraction:
         self._numerator: int = int(numerator / gcd)
         self._denominator: int = int(denominator / gcd)
 
+    @property
+    def numerator(self) -> int:
+        """
+        Get numerator.
+
+        :return: int
+
+        >>> Fraction(3, 4).numerator
+        3
+        """
+        return self._numerator
+
+    @property
+    def denominator(self) -> int:
+        """
+        Get denominator.
+
+        :return: int
+
+        >>> Fraction(3, 4).denominator
+        4
+        """
+        return self._denominator
+
     @override
     def __str__(self) -> str:
         """
@@ -64,6 +88,17 @@ class Fraction:
         """
         return f"Fraction({self._numerator}, {self._denominator})"
 
+    def __float__(self) -> float:
+        """
+        Convert to float.
+
+        :return: float
+
+        >>> float(Fraction(1, 2))
+        0.5
+        """
+        return self._numerator / self._denominator
+
     @override
     def __eq__(self, otherfraction: object) -> bool | NotImplementedType:
         """
@@ -87,7 +122,7 @@ class Fraction:
         elif isinstance(otherfraction, int):
             return self._numerator == otherfraction * self._denominator
         elif isinstance(otherfraction, float):
-            return otherfraction == self._numerator / self._denominator
+            return float(self) == otherfraction
         else:
             return NotImplemented
 
@@ -115,7 +150,7 @@ class Fraction:
         elif isinstance(otherfraction, int):
             return self._numerator < otherfraction * self._denominator
         elif isinstance(otherfraction, float):
-            return self._numerator / self._denominator < otherfraction
+            return float(self) < otherfraction
         else:
             return NotImplemented
 
