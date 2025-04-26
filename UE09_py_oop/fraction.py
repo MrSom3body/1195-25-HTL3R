@@ -32,3 +32,16 @@ class Fraction:
     @override
     def __repr__(self) -> str:
         return f"Fraction({self._numerator}, {self._denominator})"
+
+    def __add__(self, otherfraction: "Fraction | int") -> "Fraction":
+        if isinstance(otherfraction, Fraction):
+            return Fraction(
+                self._numerator * otherfraction._denominator
+                + self._denominator * otherfraction._numerator,
+                self._denominator * otherfraction._denominator,
+            )
+        else:
+            return Fraction(
+                self._numerator + otherfraction * self._denominator,
+                self._denominator,
+            )
