@@ -9,6 +9,10 @@ class Fraction:
         if denominator == 0:
             raise ArithmeticError("Denominator can not be 0")
 
+        if denominator < 0:
+            numerator = -numerator
+            denominator = -denominator
+
         gcd = math.gcd(numerator, denominator)
         self._numerator: int = int(numerator / gcd)
         self._denominator: int = int(denominator / gcd)
