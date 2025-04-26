@@ -99,3 +99,14 @@ class Fraction:
             if otherfraction == 0:
                 raise ZeroDivisionError("Division by zero")
             return Fraction(self._numerator, self._denominator * otherfraction)
+
+    def __rtruediv__(self, otherfraction: "Fraction | int") -> "Fraction":
+        if self._numerator == 0:
+            raise ZeroDivisionError("Division by zero fraction")
+        if isinstance(otherfraction, Fraction):
+            return Fraction(
+                otherfraction._numerator * self._denominator,
+                otherfraction._denominator * self._numerator,
+            )
+        else:
+            return Fraction(otherfraction * self._denominator, self._numerator)
