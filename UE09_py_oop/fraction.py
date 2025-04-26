@@ -61,3 +61,16 @@ class Fraction:
                 self._numerator - otherfraction * self._denominator,
                 self._denominator,
             )
+
+    def __rsub__(self, otherfraction: "Fraction | int") -> "Fraction":
+        if isinstance(otherfraction, Fraction):
+            return Fraction(
+                otherfraction._numerator * self._denominator
+                - self._numerator * otherfraction._denominator,
+                otherfraction._denominator * self._denominator,
+            )
+        else:
+            return Fraction(
+                otherfraction * self._denominator - self._numerator,
+                self._denominator,
+            )
