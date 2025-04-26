@@ -48,3 +48,16 @@ class Fraction:
 
     def __radd__(self, otherfraction: "Fraction | int") -> "Fraction":
         return self.__add__(otherfraction)
+
+    def __sub__(self, otherfraction: "Fraction | int") -> "Fraction":
+        if isinstance(otherfraction, Fraction):
+            return Fraction(
+                self._numerator * otherfraction._denominator
+                - self._denominator * otherfraction._numerator,
+                self._denominator * otherfraction._denominator,
+            )
+        else:
+            return Fraction(
+                self._numerator - otherfraction * self._denominator,
+                self._denominator,
+            )
