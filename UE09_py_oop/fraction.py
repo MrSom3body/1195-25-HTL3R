@@ -74,3 +74,15 @@ class Fraction:
                 otherfraction * self._denominator - self._numerator,
                 self._denominator,
             )
+
+    def __mul__(self, otherfraction: "Fraction | int"):
+        if isinstance(otherfraction, Fraction):
+            return Fraction(
+                self._numerator * otherfraction._numerator,
+                self._denominator * otherfraction._denominator,
+            )
+        else:
+            return Fraction(self._numerator * otherfraction, self._denominator)
+
+    def __rmul__(self, otherfraction: "Fraction | int"):
+        return self.__mul__(otherfraction)
