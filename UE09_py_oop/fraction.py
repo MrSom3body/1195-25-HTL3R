@@ -1,6 +1,7 @@
 __author__ = "Karun Sandhu"
 
 import math
+from types import NotImplementedType
 from typing import override
 
 
@@ -62,6 +63,33 @@ class Fraction:
         'Fraction(1, 2)'
         """
         return f"Fraction({self._numerator}, {self._denominator})"
+
+    @override
+    def __eq__(self, otherfraction: object) -> bool | NotImplementedType:
+        """
+        Check equality.
+
+        :param other: Fraction or int
+        :return: bool
+
+        >>> Fraction(1, 2) == Fraction(2, 4)
+        True
+        >>> Fraction(1, 2) == 0.5
+        True
+        >>> Fraction(1, 2) == 0.6
+        False
+        """
+        if isinstance(otherfraction, Fraction):
+            return (
+                self._numerator == otherfraction._numerator
+                and self._denominator == otherfraction._denominator
+            )
+        elif isinstance(otherfraction, int):
+            return self._numerator == otherfraction * self._denominator
+        elif isinstance(otherfraction, float):
+            return otherfraction == self._numerator / self._denominator
+        else:
+            return NotImplemented
 
     def __add__(self, otherfraction: "Fraction | int") -> "Fraction":
         """
