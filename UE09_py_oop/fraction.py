@@ -24,3 +24,7 @@ class Fraction:
                 return f"{full} {remainder}/{self._denominator}"
         else:
             return f"{self._numerator}/{self._denominator}"
+
+    @override
+    def __repr__(self) -> str:
+        return f"Fraction({self._numerator}, {self._denominator})"
