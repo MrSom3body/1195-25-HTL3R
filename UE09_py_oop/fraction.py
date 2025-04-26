@@ -45,3 +45,6 @@ class Fraction:
                 self._numerator + otherfraction * self._denominator,
                 self._denominator,
             )
+
+    def __radd__(self, otherfraction: "Fraction | int") -> "Fraction":
+        return self.__add__(otherfraction)
