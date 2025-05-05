@@ -20,3 +20,6 @@ out/
 ### Python ###
 __pycache__/
 *.py[cod]
+
+### Other ###
+UE08_py_comprehension/de-en.txt
