@@ -53,6 +53,10 @@
                     activate.enable = true;
                     install.enable = true;
                   };
+                  libraries = [
+                    pkgs.stdenv.cc.cc
+                    pkgs.zlib
+                  ];
                 };
 
                 java = {
