@@ -6,7 +6,7 @@ import argparse
 class GradeNamespace(argparse.Namespace):
     n: str = ""
     s: str = ""
-    m: str = ""
+    m: str = "Nummer"
     f: str = ""
     verbose: bool = False
     quiet: bool = False
@@ -29,6 +29,7 @@ def parse_arguments() -> GradeNamespace:
     _ = parser.add_argument(
         "-m",
         type=str,
+        # default="Nummer", # not needed as it is already set in GradeNamespace
         help="name of column to link to (default: 'Nummer')",
     )
     _ = parser.add_argument(
