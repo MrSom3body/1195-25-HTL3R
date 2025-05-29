@@ -78,3 +78,6 @@ def read_xml(filename: str) -> pd.DataFrame:
 if __name__ == "__main__":
     args = parse_arguments()
     student_data = read_xml(args.s)
+    grade_data = pd.read_csv(args.n, sep=";", dtype=str)
+
+    student_grade_data = pd.merge(student_data, grade_data)
