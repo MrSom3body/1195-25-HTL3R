@@ -80,6 +80,15 @@ def read_xml(filename: str) -> pd.DataFrame:
 
 if __name__ == "__main__":
     args = parse_arguments()
+
+    if args.verbose and not args.quiet:
+        print("csv file with grades:", args.n)
+        print("xml file with student data:", args.s)
+        print("name of the column to join on:", args.m)
+        print("subjects to filter:", args.f)
+
+    print("output file:", args.m)
+
     student_data = read_xml(args.s)
     grade_data = pd.read_csv(args.n, sep=";", dtype=str)
     if args.f:
