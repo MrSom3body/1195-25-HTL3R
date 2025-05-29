@@ -9,7 +9,7 @@ class GradeNamespace(argparse.Namespace):
     n: str = ""
     s: str = ""
     m: str = "Nummer"
-    f: str = ""
+    f: list[str] = []
     verbose: bool = False
     quiet: bool = False
 
@@ -35,7 +35,9 @@ def parse_arguments() -> GradeNamespace:
         help="name of column to link to (default: 'Nummer')",
     )
     _ = parser.add_argument(
-        "-f", type=str, help="name of the subject to filter"
+        "-f",
+        type=lambda s: [item.strip() for item in s.split(",")],
+        help="name of the subjects to filter (seperated by a comma)",
     )
     _ = parser.add_argument(
         "-v", "--verbose", action="store_true", help="more output"
@@ -79,5 +81,7 @@ if __name__ == "__main__":
     args = parse_arguments()
     student_data = read_xml(args.s)
     grade_data = pd.read_csv(args.n, sep=";", dtype=str)
+    if args.f:
+        grade_data = grade_data.filter(items=[args.m, *args.f])
 
     student_grade_data = pd.merge(student_data, grade_data)
