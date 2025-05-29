@@ -6,6 +6,7 @@ import re
 
 
 class GradeNamespace(argparse.Namespace):
+    outfile: str = ""
     n: str = ""
     s: str = ""
     m: str = "Nummer"
@@ -85,3 +86,4 @@ if __name__ == "__main__":
         grade_data = grade_data.filter(items=[args.m, *args.f])
 
     student_grade_data = pd.merge(student_data, grade_data)
+    student_grade_data.to_csv(args.outfile, index=False)
