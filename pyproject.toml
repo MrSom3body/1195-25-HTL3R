@@ -1,17 +1,17 @@
-[tool.poetry]
-name = "1195-25-HTL3R"
+[project]
+name = "1195-25-htl3r"
 version = "0.1.0"
 description = "Software development in 4th year at HTL3R"
-authors = ["Karun Sandhu <129101708+MrSom3body@users.noreply.github.com>"]
-license = "GPLv3"
+authors = [
+  { name = "Karun Sandhu", email = "129101708+MrSom3body@users.noreply.github.com" },
+]
 readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=2.2.3",
+    "pandas-stubs>=2.2.3.250527",
+    "paramiko>=3.5.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-paramiko = "^3.5.1"
-pandas = "^2.2.3"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.setuptools]
+py-modules = []
