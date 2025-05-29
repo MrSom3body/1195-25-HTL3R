@@ -94,5 +94,10 @@ if __name__ == "__main__":
     if args.f:
         grade_data = grade_data.filter(items=[args.m, *args.f])
 
+        for subject in args.f:
+            grade_data[subject] = pd.to_numeric(grade_data[subject])
+
+        grade_data["Schnitt"] = grade_data[args.f].mean(axis=1).round(2)
+
     student_grade_data = pd.merge(student_data, grade_data)
     student_grade_data.to_csv(args.outfile, index=False)
